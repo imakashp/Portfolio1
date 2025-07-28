@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akash P | Aspiring Software Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;500;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #c0392b;
+      --bg: #faf9f6;
+      --text: #1b1b1b;
+      --accent: #304ffe;
+      --gray: #e0e0e0;
+      --shadow: 0 4px 32px rgba(50,50,93,0.08);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0; padding: 0;
+    }
+
+    /* NAVIGATION */
+    nav {
+      position: sticky; top: 0; background: #fff; z-index: 10;
+      box-shadow: var(--shadow);
+    }
+    .nav-container {
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.7rem 20px;
+    }
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      padding: 8px 12px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    @media (max-width: 720px) {
+      .hamburger {
+        display: block;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        width: 100%;
+        padding: 20px 0;
+        box-shadow: var(--shadow);
+        z-index: 9;
+        align-items: center;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+    }
+
+    main { width: 100%; max-width: 1000px; margin: auto; }
+    section { padding: 48px 20px; }
+    .hero {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 32px; min-height: 330px;
+    }
+    .profile-pic {
+      width: 168px; height: 168px;
+      border-radius: 50%; object-fit: cover; border: 6px solid var(--gray);
+      box-shadow: 0 7px 24px rgba(0,0,0,0.11);
+      background: #fff;
+    }
+    .hero-text {flex:1 1 350px; min-width:250px;}
+    .headline { font-size: 2.35rem; font-weight: 700; color: var(--primary); margin-bottom: 10px;}
+    .desc   { font-size: 1.1rem; color: #444; max-width: 440px; }
+    .cta-btn { margin-top: 18px; background: var(--primary); color: #fff; border: none; padding: 12px 32px; border-radius: 28px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: background 0.15s;}
+    .cta-btn:hover { background: var(--accent); }
+
+    h2 { color: var(--accent); margin-bottom: 8px; }
+    .about-summary { font-size: 1.06rem; margin-bottom: 10px; max-width: 700px; }
+    .about-personal { color: #555; font-style: italic; }
+    .skills-wrap { display: flex; flex-wrap: wrap; gap: 16px 36px; margin: 14px 0 0 0; }
+    .skill {
+      background: var(--gray); padding: 9px 22px; border-radius: 22px; font-size: 1.02rem; color: var(--primary); font-weight: 600; letter-spacing: .5px; margin-bottom:6px;
+      box-shadow: 0 1px 2px rgba(220,220,222,0.13);
+      transition: background 0.18s;
+    }
+    .skill:hover { background: var(--primary); color: #fff;}
+    .tools-list {margin:20px 0 0 0;display:flex;gap:18px;flex-wrap:wrap; align-items:center;}
+    .tool { background: #e3ebff; color: var(--accent); border-radius: 8px; padding: 5px 17px; font-size:0.98rem; font-weight: 500;}
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(276px, 1fr)); gap: 27px; margin-top:24px; }
+    .project-card {
+      background: #fff; border-radius: 18px; box-shadow: 0 2px 12px rgba(80,80,100,0.08); padding: 22px;
+      transition: transform 0.16s, box-shadow 0.16s;
+      border: 1px solid var(--gray);
+      min-height:255px;
+    }
+    .project-card:hover { transform: translateY(-8px) scale(1.025); box-shadow: 0 6px 24px rgba(80,80,140,0.12); border-color: var(--primary);}
+    .project-title { font-weight: 600; font-size:1.09rem; color: var(--accent); margin-bottom: 4px;}
+    .project-tech { font-size: 0.98rem; color: #555; margin-bottom: 7px;}
+    .project-desc { font-size: 1.035rem; color: #2c2c2c; }
+    .publication {
+      background: #f8fafc; border-left: 4px solid var(--primary); border-radius: 10px;
+      padding: 21px 22px; margin: 18px 0 0 0; font-size: 1rem;
+      box-shadow: 0 1.5px 9px rgba(60,60,80,0.06);
+    }
+    .publication a {
+      color: var(--accent); font-weight: 500; text-decoration: underline;
+    }
+    .contact-container { display: flex; flex-wrap: wrap; gap: 36px; align-items: flex-start; }
+    .contact-info { min-width:230px; }
+    .contact-form { max-width:350px; flex:1 1 280px; }
+    .form-label { display: block; margin-bottom:5px; font-size:0.98rem; font-weight:500;color:var(--accent);}
+    .form-input, .form-textarea {
+      width: 100%; font-size: 1rem; border-radius: 8px;
+      border: 1px solid var(--gray); padding: 11px 10px; margin-bottom: 16px;
+      background: #f9f9fc;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--primary);}
+    .form-btn { background: var(--accent); color: #fff; border: none; padding: 9px 25px; border-radius: 20px; font-size: 1rem; font-weight:600; cursor: pointer; margin-top: 4px; transition: background 0.14s;}
+    .form-btn:hover { background: var(--primary);}
+    .contact-socials {margin: 15px 0 0 0;display:flex;gap:16px;}
+    .social-btn { background: #e0eaff; color: var(--accent); padding: 7px 16px; border-radius: 6px; font-size: 1rem; border: none; font-weight: 500; text-decoration: none; transition: background 0.12s;}
+    .social-btn:hover { background: var(--primary); color: #fff;}
+    footer {
+      text-align: center; padding: 16px 0; font-size: 0.99rem; color: #888; background: #fff;margin-top:34px;}
+    @media (max-width:700px) {
+      .hero {flex-direction: column;text-align:center;}
+      .projects-grid {grid-template-columns:1fr;}
+      .contact-container {flex-direction:column;gap:22px;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-container">
+      <div class="nav-logo">Akash P</div>
+      <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section id="home" class="hero">
+      <img src="profile.jpg" alt="Akash's Profile Image" class="profile-pic" />
+      <div class="hero-text">
+        <div class="headline">Aspiring Software Developer | MCA Student</div>
+        <div class="desc">Hi, I'm Akash. I'm passionate about tech, software development, and building innovative digital solutions.</div>
+        <button class="cta-btn" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="about-summary">
+        MCA student skilled in Python, Java, ReactJS, MySQL, MongoDB, and web development.
+      </div>
+      <div class="about-personal">
+        I chose this path to turn creative solutions into tangible change.
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-wrap">
+        <span class="skill">Python</span><span class="skill">Java</span><span class="skill">ReactJS</span>
+        <span class="skill">JavaScript</span><span class="skill">HTML/CSS</span><span class="skill">MySQL</span>
+        <span class="skill">MongoDB</span><span class="skill">Machine Learning</span><span class="skill">Data Management</span>
+      </div>
+      <div class="tools-list">
+        <div class="tool">Notion</div><div class="tool">Trello</div><div class="tool">Adobe XD</div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-title">Movie Recommendation Engine</div>
+          <div class="project-tech">Python, ML</div>
+          <div class="project-desc">Built a movie recommendation system using Cosine Similarity.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2>Publications</h2>
+      <div class="publication">
+        <b>Personalized Content-Based Movie Recommendation System</b><br>
+        Presented at <i>ICVADV-2025</i>. <br />
+        <a href="#">View Publication</a>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <div><b>Email:</b> <a href="mailto:akashpg47@gmail.com">akashpg47@gmail.com</a></div>
+          <div><b>Phone:</b> <a href="tel:8050530215">8050530215</a></div>
+          <div class="contact-socials">
+            <a href="#" class="social-btn">LinkedIn</a>
+            <a href="#" class="social-btn">GitHub</a>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="sendContactForm(event)">
+          <label class="form-label">Name</label>
+          <input required class="form-input" name="name" type="text" placeholder="Your Name">
+          <label class="form-label">Email</label>
+          <input required class="form-input" name="email" type="email" placeholder="Your Email">
+          <label class="form-label">Message</label>
+          <textarea required class="form-textarea" name="message" rows="3" placeholder="Your Message"></textarea>
+          <button type="submit" class="form-btn">Send</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Connect with me! &copy; 2025 Akash P
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+
+    function sendContactForm(e) {
+      e.preventDefault();
+      const data = new FormData(e.target);
+      alert('Thank you, ' + data.get('name') + '! Your message has been received.');
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
